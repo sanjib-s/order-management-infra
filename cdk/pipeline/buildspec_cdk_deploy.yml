@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    CDK_NEW_BOOTSTRAP: "1"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+      nodejs: 20
+    commands:
+      - npm i -g aws-cdk
+      - python -m venv .venv
+      - . .venv/bin/activate || .venv\Scripts\activate
+      - pip install -U pip
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - . .venv/bin/activate || .venv\Scripts\activate
+      - cd cdk
+      - cdk synth -c envFile=../environments/dev.json
+      - cdk deploy --all -c envFile=../environments/dev.json
+
+artifacts:
+  files:
+    - "**/*"

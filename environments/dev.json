@@ -1,0 +1,13 @@
+{
+  "envName": "dev",
+  "ssm": {
+    "vpcId": "/orders/dev/network/vpc_id",
+    "privateSubnetIds": "/orders/dev/network/private_subnet_ids",
+    "privateSubnetAzs": "/orders/dev/network/private_subnet_azs",
+    "lambdaSecurityGroupId": "/orders/dev/network/lambda_sg_id",
+    "eksOrdersAlbDns": "/orders/dev/eks/orders_alb_dns"
+  },
+  "cognito": {
+    "domainPrefix": "orders-demo-auth-dev"
+  }
+}
