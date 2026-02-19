@@ -3,12 +3,27 @@
 
 This repository contains the infrastructure-as-code (IaC) implementation for the Order Management demo solution using AWS CDK (Python).
 
-It provisions a private, secure, scalable API-driven backend architecture supporting:
+The solution demonstrates modern API design patterns for application workloads, including secure private connectivity and separation of read and write responsibilities. Secure, scalable API-driven backend architecture supporting:
 
 - GET → Read order details
 - POST → Create order via microservice and persist to DynamoDB
 
 ---
+##  Use Case: Order Management 
+
+GET /orders/{orderId}
+Read-optimized path:
+API Gateway → Lambda → DynamoDB
+Fast, stateless, scalable
+
+
+POST /orders
+Write-processing path:
+
+API Gateway → Lambda → Internal ALB → EKS
+EKS applies business logic
+Lambda writes final order to DynamoDB
+
 
 ##  Architecture Overview
 
@@ -50,6 +65,5 @@ The solution demonstrates:
 - API Gateway acts as controlled entry point
 
 ---
-
 
 
